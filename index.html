@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Justin Ross</title>
+  <script src="https://kit.fontawesome.com/cd09160579.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="prompted.css">
+  <style>
+    @font-face {
+      font-family: 'Stark';
+      src: url("Stark.otf");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #1E1E1E;
+      background-image:
+        radial-gradient(circle at top, rgba(140, 116, 44, .12), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, .03), transparent 35%);
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      background: rgba(30, 30, 30, .75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(140, 116, 44, .25);
+      z-index: 99;
+    }
+
+    .logo {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, rgba(140, 116, 44, .25), transparent 70%);
+      transition: .4s;
+    }
+
+    .logo:hover {
+      transform: rotate(10deg);
+      box-shadow: 0 0 20px #8C742C;
+    }
+
+    .logo img {
+      width: 70px;
+    }
+
+    #menu-bar {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 28px;
+    }
+
+    ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    ul a {
+      font-family: 'Stark';
+      text-decoration: none;
+      color: #fff;
+      font-size: 24px;
+      position: relative;
+      letter-spacing: 3px;
+    }
+
+    ul a:hover {
+      color: #8C742C;
+    }
+
+    ul a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 2px;
+      width: 0;
+      background: #8C742C;
+      transition: .3s;
+    }
+
+    ul a:hover:after {
+      width: 100%;
+    }
+
+    .home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home:before,
+    .home:after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      opacity: .5;
+    }
+
+    .home:before {
+      top: 25px;
+      left: 25px;
+      border-top: 2px solid #8C742C;
+      border-left: 2px solid #8C742C;
+    }
+
+    .home:after {
+      bottom: 25px;
+      right: 25px;
+      border-bottom: 2px solid #8C742C;
+      border-right: 2px solid #8C742C;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+      width: min(1200px, 100%);
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .big2 {
+      font-family: Stark;
+      font-size: 88px;
+      color: #8C742C;
+      font-style: italic;
+      letter-spacing: 8px;
+      text-shadow:
+        0 0 10px rgba(140, 116, 44, .35),
+        5px 8px 12px rgba(0, 0, 0, .7);
+    }
+
+    .subtitle {
+      margin: 18px 0;
+      color: #BFC1C2;
+      letter-spacing: 4px;
+    }
+
+    .click {
+      margin-top: 20px;
+      padding: 14px 34px;
+      border: 2px solid #BFC1C2;
+      background: #8C742C;
+      color: #fff;
+      font-family: Stark;
+      font-size: 24px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .click:before {
+      content: "";
+      position: absolute;
+      left: -120%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+      transition: .6s;
+    }
+
+    .click:hover:before {
+      left: 120%;
+    }
+
+    .click:hover {
+      box-shadow: 0 0 18px #8C742C;
+    }
+
+    .handbox {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .handbox:before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(140, 116, 44, .15);
+      filter: blur(80px);
+    }
+
+    .hand {
+      max-width: 480px;
+      width: 90%;
+      animation: f 4s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes f {
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .big2 {
+        font-size: 58px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      #menu-bar {
+        display: block;
+      }
+
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        flex-direction: column;
+        background: #242424;
+        padding: 15px;
+        border: 1px solid #8C742C;
+        border-radius: 10px;
+      }
+
+      ul.active {
+        display: flex;
+      }
+    }
+
+    .access span{
+       width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#8C742C;
+      box-shadow: 0 0 12px #8C742C;
+      animation:pulse 1s infinite;
+    }
+
+    .access a{
+      text-decoration: underline;
+      color: #8C742C;
+    }
+
+    .access a:hover{
+      color: #bea045;
+    }
+
+    .access{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    font-weight: bold;
+    color:#8C742C;
+    letter-spacing:3px;
+    font-size:13px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href=""><img src="logo.png"></a>
+    </div>
+    <button id="menu-bar"><i class="fa-solid fa-bars"></i></button>
+    <ul id="nav-links">
+      <a href="#"><li><i class="fa-solid fa-house"></i> HOME</li></a>
+      <a href="#"><li><i class="fa-solid fa-folder-open"></i> PROJECT</li></a>
+      <a href="profile.html#about"><li><i class="fa-solid fa-user"></i> ABOUT</li></a>
+      <a id="openBtn" style="cursor: pointer;"><li><i class="fa-solid fa-circle-user"></i> PROFILE</li></a>
+    </ul>
+  </nav>
+  <section class="home">
+    <div class="profile-modal" id="modal">
+    <div class="profile-card">
+              <button class="close-modal" id="close">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+        <div class="scan-ring">
+            <div class="profile-frame">
+                <!-- Put your image here -->
+                <!-- <img src="profile.png"> -->
+            </div>
+        </div>
+        <h2>JUSTIN ROSS</h2>
+        <p>WEB DEVELOPER</p>
+        <div class="access">
+          <span></span>
+          <a href="profile.html">ACCESS MORE</a>
+          <span></span>
+        </div>
+    </div>
+</div>
+    <div class="container">
+      <div class="left">
+        <h1 class="big2">JUSTIN ROSS</h1>
+        <p class="subtitle">WEB DEVELOPER • DESIGNER • CREATOR</p>
+        <button class="click">ACTIVATE</button>
+      </div>
+      <div class="handbox">
+        <img src="hand.png" class="hand">
+      </div>
+    </div>
+  </section>
+
+  <script src="index.js">
+   
+  </script>
+</body>
+</html>
